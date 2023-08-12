@@ -1,3 +1,10 @@
+use std::io;
+
+
 fn main() {
-    println!("Hello, world!");
+    let mut userInput = String::new();
+    io::stdin().read_line(&mut userInput);
+
+    println!("Generated succesfully...");
 }
+
