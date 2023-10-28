@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ metadata.title }}</title>
+    <link rel="stylesheet" href="/static/picnic.min.css">
+</head>
+<body>
+    <header>
+        <h1>{{ metadata.title }}</h1>
+    </header>
+    <nav>
+        <a href="/">Home</a>
+        {% for post_link in post_links %}
+            <a href="{{ post_link.url }}">{{ post_link.title }}</a>
+        {% endfor %}
+    </nav>
+    <main>
+        <article>
+            <h1>{{ metadata.title }}</h1>
+            <p>Published on {{ metadata.date }}</p>
+            <div>
+                {{ content | safe }}
+            </div>
+        </article>
+    </main>
+    <footer>
+        &copy; {{ current_year }} Your Blog Name
+    </footer>
+</body>
+</html>
