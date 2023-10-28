@@ -8,6 +8,6 @@ This is the main page of my blog. I'll be sharing various articles, thoughts, an
 
 Check out my latest posts:
 
-- [Post 1: Introduction to Markdown](articles/intro-to-markdown.md)
-- [Post 2: The World of Open Source](articles/open-source-blog.md)
-- [Post 3: Exploring Programming Languages](articles/exploring-languages.md)
+- [Post 1: Introduction to Markdown](articles/article1.md)
+- [Post 2: The World of Open Source](articles/article2.md)
+- [Post 3: Exploring Programming Languages](articles/article3.md)

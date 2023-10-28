@@ -1,7 +1,4 @@
 
-**posts/post2.md** (Second blog post)
-
-```markdown
 ---
 title: Getting Started with Rust
 ---
@@ -20,3 +17,4 @@ To install Rust, follow the instructions on the official [Rust website](https://
 fn main() {
     println!("Hello, Rust!");
 }
+```

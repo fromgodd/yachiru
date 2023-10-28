@@ -25,7 +25,7 @@ fn main() {
     copy_dir(current_dir.join("static"), current_dir.join("dist/static")).unwrap();
 
     // Process index.md
-    process_md_file(&tera, "template.html", &current_dir.join("content/index.md"), &current_dir.join("dist/index.html"));
+    process_md_file(&tera, &current_dir.join("content/index.md"), &current_dir.join("dist/index.html"));
 
     // Create articles directory in dist
     fs::create_dir_all(current_dir.join("dist/articles")).unwrap();
@@ -36,19 +36,17 @@ fn main() {
         let path = entry.path();
         if path.is_file() && path.extension().unwrap() == "md" {
             let output_path = format!("{}/dist/articles/{}.html", current_dir.to_str().unwrap(), path.file_stem().unwrap().to_str().unwrap());
-            process_md_file(&tera, "article_template.html", &PathBuf::from(path.to_str().unwrap()), &PathBuf::from(&output_path));
+            process_md_file(&tera, &PathBuf::from(path.to_str().unwrap()), &PathBuf::from(&output_path));
         }
     }
 }
-fn process_md_file(tera: &Tera, template_name: &str, input_path: &PathBuf, output_path: &PathBuf) {
+
+fn process_md_file(tera: &Tera, input_path: &PathBuf, output_path: &PathBuf) {
     // Read markdown file
     let md = fs::read_to_string(input_path).unwrap();
 
     // Parse front matter and content
-    let (front_matter, mut content) = parse_front_matter(&md);
-
-    // Convert .md links to .html
-    content = content.replace(".md)", ".html)");
+    let (front_matter, content) = parse_front_matter(&md);
 
     // Convert markdown content to HTML
     let html_content = markdown_to_html(&content, &ComrakOptions::default());
@@ -57,31 +55,11 @@ fn process_md_file(tera: &Tera, template_name: &str, input_path: &PathBuf, outpu
     let mut context = Context::new();
     context.insert("content", &html_content);
     context.insert("title", front_matter.get("title").unwrap_or(&"".into()));
-    let result = tera.render(template_name, &context).unwrap();
+    let result = tera.render("template.html", &context).unwrap();
 
     // Write to file
     fs::write(output_path, result).unwrap();
 }
-
-// fn process_md_file(tera: &Tera, template_name: &str, input_path: &PathBuf, output_path: &PathBuf) {
-//     // Read markdown file
-//     let md = fs::read_to_string(input_path).unwrap();
-
-//     // Parse front matter and content
-//     let (front_matter, content) = parse_front_matter(&md);
-
-//     // Convert markdown content to HTML
-//     let html_content = markdown_to_html(&content, &ComrakOptions::default());
-
-//     // Apply template
-//     let mut context = Context::new();
-//     context.insert("content", &html_content);
-//     context.insert("title", front_matter.get("title").unwrap_or(&"".into()));
-//     let result = tera.render(template_name, &context).unwrap();
-
-//     // Write to file
-//     fs::write(output_path, result).unwrap();
-// }
 
 fn parse_front_matter(md: &str) -> (HashMap<String, String>, String) {
     if !md.starts_with("---") {
