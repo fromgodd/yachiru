@@ -6,9 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-chrono = "0.4.31"
-clap = "2"
+comrak = "0.19.0"
 pulldown-cmark = "0.8"
-tera = "1.0"
-walkdir = "2.3"
-frontmatter = "0.3.1"
+tera = "1.19.1"
