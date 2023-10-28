@@ -1,7 +1,3 @@
-
-**posts/post3.md** (Third blog post)
-
-```markdown
 ---
 title: Exploring Static Site Generators
 ---
