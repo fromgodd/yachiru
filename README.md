@@ -38,6 +38,7 @@ To get started with Yachiru.rs, follow these steps:
 Plans and current work:
 
 - [ ] Complete and improve documentation.
+- [ ] ADD TABLE SUPPORT!!! TABLES WON'T CONVERT TO HTML
 - [ ] Develop a user-friendly command-line interface (CLI), CLI "make", "remove", "new foobar --article" and etc. Need to work on arguments and make easier.
 - [ ] Enhance the website template and styling.
 - [ ] Implement additional features based on user feedback.
