@@ -11,3 +11,5 @@ Check out my latest posts:
 - [Post 1: Introduction to Markdown](articles/article1.md)
 - [Post 2: The World of Open Source](articles/article2.md)
 - [Post 3: Exploring Programming Languages](articles/article3.md)
+- [Post 4: Introducing to calculus and statistics](articles/statistics.md)
+
