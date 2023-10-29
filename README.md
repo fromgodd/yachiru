@@ -41,4 +41,7 @@ Plans and current work:
 - [ ] Develop a user-friendly command-line interface (CLI).
 - [ ] Enhance the website template and styling.
 - [ ] Implement additional features based on user feedback.
+- [ ] Syntax highligting support. Comrak supports syntax highlighting through syntect, so it should be easy to support. Some links
+https://docs.rs/comrak/latest/comrak/fn.markdown_to_html_with_plugins.html
+https://docs.rs/comrak/latest/comrak/plugins/syntect/struct.SyntectAdapter.html
 
