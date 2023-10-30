@@ -2,19 +2,22 @@ use std::env;
 use std::fs::File;
 use std::io::Write;
 use std::path::Path;
+use chrono::prelude::*;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
-    if args.len() != 3 || args[1] != "article" {
-        println!("Usage: yachiru article <article_name>");
+    if args.len() < 4 || args[1] != "new" || args[3] != "--type" || args[5] != "--date" {
+        println!("Usage: yachiru new <title> --type article --date true|false");
         return;
     }
 
-    let article_name = &args[2];
-    let path = Path::new("content/articles").join(format!("{}.md", article_name));
+    let title = &args[2];
+    let date = if args[6] == "true" { Utc::now().to_string() } else { "".to_string() };
+
+    let path = Path::new("content/articles").join(format!("{}.md", title));
 
     let mut file = File::create(&path).expect("Unable to create file");
-    file.write_all(b"---\ntitle: \n---\n").expect("Unable to write data");
-    
+    write!(file, "---\ntitle: {}\ndate: {}\n---\n", title, date).expect("Unable to write data");
+
     println!("Created new article at {:?}", path);
 }

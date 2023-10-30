@@ -2,9 +2,13 @@
 name = "yachiru"
 version = "0.1.0"
 edition = "2021"
+[[bin]]
+name = "cli"
+path = "src/cli.rs"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 comrak = "0.19.0"
 tera = "1.19.1"
+chrono = "0.4"
